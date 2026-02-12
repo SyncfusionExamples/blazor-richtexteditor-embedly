@@ -223,6 +223,6 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 - [Embedly Official Documentation](https://embed.ly/docs)
 - [Embedly Supported Providers](https://embed.ly/providers)
 - [Blazor Documentation](https://learn.microsoft.com/aspnet/core/blazor/)
-- [.NET 10 Release Notes](https://learn.microsoft.com/dotnet/core/whats-new/dotnet-10)
+- [.NET 10 Release Notes](https://dotnet.microsoft.com/en-us/download)
 
 **Note**: This is a demonstration project. For production use, ensure you have valid licenses for Syncfusion components and implement appropriate security measures.
