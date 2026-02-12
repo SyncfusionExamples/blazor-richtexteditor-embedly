@@ -225,12 +225,4 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 - [Blazor Documentation](https://learn.microsoft.com/aspnet/core/blazor/)
 - [.NET 10 Release Notes](https://learn.microsoft.com/dotnet/core/whats-new/dotnet-10)
 
-## License
-
-This project is provided as part of Syncfusion examples. See the LICENSE file for more details.
-
-**Note**: This is a demonstration project. For production use:
-- Ensure you have valid licenses for Syncfusion components
-- Register Embedly API key for production use
-- Implement appropriate security measures
-- Monitor API usage and rate limits
+**Note**: This is a demonstration project. For production use, ensure you have valid licenses for Syncfusion components and implement appropriate security measures.
