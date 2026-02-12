@@ -93,10 +93,6 @@
         if (args.RequestType == "Links")
         {
             // Call JavaScript interop function to wrap link in Embedly card
-            // This function:
-            // 1. Finds all links in editor content
-            // 2. Wraps them in blockquote elements with embedly-card class
-            // 3. Calls Embedly library to process and render preview cards
             await JS.InvokeVoidAsync("embedlyInterop.wrapLinkInEmbedlyCard");
         }
     }
@@ -109,8 +105,6 @@
         if (firstRender)
         {
             // Call JavaScript function to initialize Embedly library
-            // This ensures Embedly's embed processing functionality is available
-            // Must be called after DOM is ready
             await JS.InvokeVoidAsync("initializeEmbedly");
         }
     }
