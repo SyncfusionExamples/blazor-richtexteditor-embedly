@@ -6,6 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Register Syncfusion Blazor services
+// Note: For production use, register your Syncfusion license key:
+// Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR_LICENSE_KEY");
 builder.Services.AddSyncfusionBlazor();
 
 var app = builder.Build();
