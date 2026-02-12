@@ -18,10 +18,6 @@ This project demonstrates a professional integration of **Syncfusion Blazor Rich
 - **Rich Text Editing**: Full-featured WYSIWYG editor for content creation
 - **Automatic Link Embedding**: Plain text URLs automatically transform into rich preview cards
 - **Rich Preview Cards**: Display titles, descriptions, images, and metadata
-- **Multi-Content Support**: Works with articles, videos, images, documents, and embeddable web content
-- **One-Click Linking**: Simple toolbar button to insert URLs
-- **Real-time Processing**: Links are processed immediately upon insertion
-- **Responsive Design**: Preview cards adapt to different screen sizes
 
 ## Getting Started
 
@@ -40,7 +36,8 @@ Ensure you have the following installed on your development machine:
 ### Step 1: Clone the Repository
 
 ```powershell
-git clone https://github.com/SyncfusionExamples/blazor-richtexteditor-embedly.git; cd blazor-richtexteditor-embedly
+git clone https://github.com/SyncfusionExamples/blazor-richtexteditor-embedly.git;
+cd blazor-richtexteditor-embedly
 ```
 
 ### Step 2: Navigate to Project Directory
@@ -96,16 +93,6 @@ Open your browser and navigate to the displayed URL, then click on the "Embedly"
    - Thumbnail image
    - Clickable preview card
 
-### Example URLs to Try
-
-```
-https://www.youtube.com/watch?v=dQw4w9WgXcQ     # YouTube Video
-https://www.github.com                           # GitHub (Webpage)
-https://www.medium.com/@user/article             # Article
-https://www.wikipedia.org/wiki/Web_development   # Wiki Article
-https://www.amazon.com/product                   # Product Page
-```
-
 ## Project Structure
 
 ```
@@ -145,11 +132,6 @@ The Embedly platform is configured through the Embedly CDN script loaded in `App
 <script src="https://cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
 ```
 
-**Configuration Details**:
-- CDN endpoint: `https://cdn.embedly.com/widgets/platform.js`
-- Charset: UTF-8 (required for proper encoding)
-- Loaded in `<body>` section for DOM availability
-
 ### JavaScript Interop
 
 The integration uses JavaScript interop in `wwwroot/scripts/embedly-interop.js`:
@@ -166,24 +148,6 @@ function initializeEmbedly() {
     // Initializes Embedly processing on page load
 }
 ```
-
-### Embedly API Key (Optional)
-
-For production use with custom branding or enhanced features:
-
-1. Create an Embedly account at [https://dash.embed.ly/](https://dash.embed.ly/)
-2. Generate an API key from your dashboard
-3. Add API key to the Embedly script:
-
-```html
-<script src="https://cdn.embedly.com/widgets/platform.js?key=YOUR_API_KEY"></script>
-```
-
-**Note**: The default public CDN works for most use cases. API key is needed for:
-- Custom domain whitelisting
-- Higher request limits
-- Advanced analytics
-- Support for restricted content
 
 ### Syncfusion License
 
@@ -214,8 +178,6 @@ The required stylesheets and scripts are configured in the `App.razor` file:
 <!-- Custom Embedly Interop Script -->
 <script src="/scripts/embedly-interop.js"></script>
 
-<!-- Blazor Framework Script -->
-<script src="_framework/blazor.web.js"></script>
 ```
 
 ## Rich Text Editor Configuration
@@ -229,145 +191,7 @@ private List<ToolbarItemModel> ToolbarItems = new()
 };
 ```
 
-**Toolbar Features**:
-- **CreateLink**: Open link insertion dialog
-- Simple, focused interface for URL embedding
-- Can be extended with additional toolbar items as needed
-
-## JavaScript Interop Details
-
-### Event Flow
-
-```
-1. User clicks CreateLink button in toolbar
-2. Syncfusion displays URL input dialog
-3. User enters URL and confirms
-4. OnActionComplete event fires with RequestType="Links"
-5. C# code calls embedlyInterop.wrapLinkInEmbedlyCard()
-6. JavaScript wraps link in blockquote element
-7. Embedly library processes and renders preview card
-```
-
-### Key Functions
-
-**embedlyInterop.wrapLinkInEmbedlyCard()**
-- Finds all links in editor content
-- Wraps each link in `<blockquote class="embedly-card">`
-- Calls Embedly library to process and render
-- Prevents duplicate wrapping with guard clause
-
-**initializeEmbedly()**
-- Called on component render
-- Initializes Embedly library for initial page content
-- Ensures preview cards render properly
-
-## Content Samples
-
-### Initial Editor Content
-
-The editor includes helpful instructions:
-
-```html
-<p><strong>Embedly integration automatically transforms plain links into rich, 
-interactive preview cards with titles, descriptions, and thumbnails.</strong></p>
-
-<h4>How it works:</h4>
-<ul>
-    <li><strong>Paste or create links</strong> - Use the CreateLink toolbar button</li>
-    <li><strong>Automatic card rendering</strong> - Links convert to rich preview cards</li>
-    <li><strong>Supported content</strong> - Works with articles, videos, images, documents</li>
-</ul>
-```
-
-## Customization
-
-### Adding More Toolbar Items
-
-Extend the toolbar by adding more ToolbarCommand items:
-
-```csharp
-private List<ToolbarItemModel> ToolbarItems = new()
-{
-    new ToolbarItemModel { Command = ToolbarCommand.Bold },
-    new ToolbarItemModel { Command = ToolbarCommand.Italic },
-    new ToolbarItemModel { Command = ToolbarCommand.CreateLink },
-    new ToolbarItemModel { Command = ToolbarCommand.Image }
-};
-```
-
-### Customizing Preview Card Styling
-
-Embedly preview cards can be styled via CSS:
-
-```css
-blockquote.embedly-card {
-    max-width: 600px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-```
-
-### Processing Custom Link Formats
-
-Modify `embedly-interop.js` to handle custom link formats:
-
-```javascript
-wrapLinkInEmbedlyCard: function(selector) {
-    const rteContent = document.querySelector(selector || '.e-rte-content');
-    // Custom processing logic
-    if (window.embedly && window.embedly.lib) {
-        window.embedly.lib.process(rteContent);
-    }
-}
-```
-
-## Troubleshooting
-
-### Preview Cards Not Displaying
-
-1. **Check Internet Connection**: Embedly requires internet access
-2. **Verify CDN Loading**: Check browser console for script errors
-3. **Allow Cookies**: Some content may require cookies
-4. **Embedly Service Status**: Check [status.embed.ly](https://status.embed.ly/)
-
-### Links Not Converting to Cards
-
-- Ensure URL is publicly accessible and embeddable
-- Check Embedly API restrictions
-- Try a different URL to verify functionality
-- Clear browser cache and reload page
-
-### JavaScript Interop Issues
-
-- Verify `embedly-interop.js` is loaded
-- Check browser console for JavaScript errors
-- Ensure Syncfusion scripts load before Embedly
-- Confirm Embedly CDN is accessible
-
-### Performance Issues
-
-- Limit number of embeds on single page
-- Use lazy loading for multiple embeds
-- Consider implementing pagination
-- Monitor Embedly API response times
-
-## API Reference
-
-### Supported Content Types
-
-Embedly automatically detects and embeds:
-- **Videos**: YouTube, Vimeo, Dailymotion, etc.
-- **Articles**: News sites, blogs, Medium, etc.
-- **Social Media**: Twitter, Instagram, LinkedIn, etc.
-- **Images**: Hosted images with metadata
-- **Documents**: PDF, presentations, spreadsheets
-- **Products**: Amazon, eBay, and other retailers
-- **Recipes**: Food blogs and recipe sites
-- **Tweets**: Twitter content with threading
-- **Podcasts**: Audio content platforms
-
-### Event Handlers
+## Event Handlers
 
 **OnActionComplete**
 ```csharp
@@ -400,32 +224,6 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 - [Embedly Supported Providers](https://embed.ly/providers)
 - [Blazor Documentation](https://learn.microsoft.com/aspnet/core/blazor/)
 - [.NET 10 Release Notes](https://learn.microsoft.com/dotnet/core/whats-new/dotnet-10)
-
-## Security Considerations
-
-### URL Validation
-
-- Embedly validates URLs before processing
-- Only publicly accessible URLs are embedded
-- Some restricted content may not display
-- Adult content may be filtered based on settings
-
-### Content Safety
-
-- Embedly performs security scanning
-- Malicious URLs are blocked
-- SSL/HTTPS is recommended for all links
-- Privacy settings can control content display
-
-### CORS Handling
-
-- Embedly handles cross-origin resource sharing
-- Works across different domains
-- Respects CORS headers from embedded sites
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
 ## License
 
