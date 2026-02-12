@@ -70,14 +70,14 @@ dotnet run
 
 The application will start and display the URL in the terminal (typically `https://localhost:5001`).
 
-Open your browser and navigate to the displayed URL, then click on the "Embedly" link to see the application in action.
+Open your browser and navigate to the displayed URL, then click on the **Embedly** link to see the application in action.
 
 ## Usage
 
 ### Accessing the Embedly Integration
 
 1. **Launch the application** and navigate to your browser
-2. Click on **"Embedly"** in the navigation menu or navigate directly to `/embedly`
+2. Click on **Embedly** in the navigation menu or navigate directly to `/`
 3. **Insert a URL** using the **CreateLink** toolbar button
 4. **Observe automatic transformation**: The link automatically converts to a rich preview card
 5. **View preview details**: See title, description, image, and metadata
