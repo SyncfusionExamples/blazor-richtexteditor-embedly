@@ -36,7 +36,7 @@ Ensure you have the following installed on your development machine:
 ### Step 1: Clone the Repository
 
 ```powershell
-git clone https://github.com/SyncfusionExamples/blazor-richtexteditor-embedly.git;
+git clone https://github.com/SyncfusionExamples/blazor-richtexteditor-embedly.git
 cd blazor-richtexteditor-embedly
 ```
 
